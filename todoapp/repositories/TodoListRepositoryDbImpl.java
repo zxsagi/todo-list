@@ -1,7 +1,7 @@
-package repositories;
+package todoapp.repositories;
 
-import config.Database;
-import entities.TodoList;
+import todoapp.config.Database;
+import todoapp.entities.TodoList;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,10 +9,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class TodoListRepositoryDbImpl implements TodoListRepository {
     private final Database database;
 
+    @Autowired
     public TodoListRepositoryDbImpl(final Database database) {
         this.database = database;
     }

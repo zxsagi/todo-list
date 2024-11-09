@@ -1,11 +1,15 @@
-package services;
+package todoapp.services;
 
-import entities.TodoList;
-import repositories.TodoListRepository;
+import todoapp.entities.TodoList;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import todoapp.repositories.TodoListRepository;
 
+@Component
 public class TodoListServiceImpl implements TodoListService {
     private TodoListRepository todoListRepository;
 
+    @Autowired
     public TodoListServiceImpl(TodoListRepository todoListRepository) {
         this.todoListRepository = todoListRepository;
     }
