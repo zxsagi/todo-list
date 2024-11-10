@@ -71,9 +71,9 @@ public class TodoListRepositoryDbImpl implements TodoListRepository {
             int rowsEffected = preparedStatement.executeUpdate();
             if (rowsEffected > 0) {
                 System.out.println("Delete successful !");
-                return false;
+                return true;
             }
-            return true;
+            return false;
         } catch (Exception e) {
             System.out.println(e.getMessage());
             return false;
