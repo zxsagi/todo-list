@@ -10,9 +10,10 @@ import todoapp.views.TodoListView;
 @ComponentScan(basePackages = "todoapp")
 public class Main {
 
+    public static ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Main.class);
+
     public static void main(String[] args) {
-        ApplicationContext applicationContext = new AnnotationConfigApplicationContext(Main.class);
-        TodoListView todoListView = applicationContext.getBean(TodoListView.class);
+        TodoListView todoListView = applicationContext.getBean("todoListDesktopView", TodoListView.class);
         todoListView.run();
     }
 

@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import todoapp.services.TodoListService;
 
-@Component
+@Component("todoListTerminalView")
 public class TodoListTerminalViewImpl implements TodoListView {
     public static Scanner scanner = new Scanner(System.in);
     private final TodoListService todoListService;
