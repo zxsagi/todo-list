@@ -1,4 +1,4 @@
-package todoapp.pages.login;
+package todoapp.services;
 
 import org.springframework.stereotype.Component;
 
