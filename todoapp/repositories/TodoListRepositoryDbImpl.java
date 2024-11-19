@@ -1,7 +1,8 @@
-package repositories;
+package todoapp.repositories;
 
-import config.Database;
-import entities.TodoList;
+import org.springframework.stereotype.Component;
+import todoapp.config.Database;
+import todoapp.entities.TodoList;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -10,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
+@Component
 public class TodoListRepositoryDbImpl implements TodoListRepository {
     private final Database database;
 
@@ -20,7 +22,7 @@ public class TodoListRepositoryDbImpl implements TodoListRepository {
     @Override
     public TodoList[] getAll() {
         Connection connection = database.getConnection();
-        String sqlStatement = "SELECT * FROM todo";
+        String sqlStatement = "SELECT * FROM todos";
         List<TodoList> todoLists = new ArrayList<>();
         try {
             PreparedStatement preparedStatement = connection.prepareStatement(sqlStatement);
@@ -41,7 +43,7 @@ public class TodoListRepositoryDbImpl implements TodoListRepository {
 
     @Override
     public void add(final TodoList todolist) {
-        String sqlStatement = "INSERT INTO todo(todo) values(?)";
+        String sqlStatement = "INSERT INTO todos(todo) values(?)";
         Connection conn = database.getConnection();
         try {
             PreparedStatement preparedStatement = conn.prepareStatement(sqlStatement);
@@ -58,7 +60,7 @@ public class TodoListRepositoryDbImpl implements TodoListRepository {
 
     @Override
     public Boolean remove(final Integer id) {
-        String sqlStatement = "DELETE FROM todo WHERE id = ?";
+        String sqlStatement = "DELETE FROM todos WHERE id = ?";
         Connection conn = database.getConnection();
         var dbId = getDbId(id);
         if (dbId == null) {
@@ -92,7 +94,7 @@ public class TodoListRepositoryDbImpl implements TodoListRepository {
 
     @Override
     public Boolean edit(final TodoList todolist) {
-        String sqlStatement = "UPDATE todo set todo = ? WHERE id = ?";
+        String sqlStatement = "UPDATE todos set todo = ? WHERE id = ?";
         Connection conn = database.getConnection();
         var dbId = getDbId(todolist.getId());
         if (dbId == null) {
