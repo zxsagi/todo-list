@@ -1,4 +1,4 @@
-package entities;
+package todoapp.entities;
 
 public class TodoList {
     private String todo;

@@ -1,6 +1,6 @@
-package repositories;
+package todoapp.repositories;
 
-import entities.TodoList;
+import todoapp.entities.TodoList;
 
 public interface TodoListRepository {
     TodoList[] getAll();
